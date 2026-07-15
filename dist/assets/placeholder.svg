@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <rect width="800" height="500" fill="#f7f1e3"/>
+  <rect x="40" y="60" width="720" height="380" rx="24" fill="#ffffff" stroke="#d7d7d7" stroke-width="4"/>
+  <rect x="80" y="110" width="260" height="180" rx="18" fill="#ffd166"/>
+  <rect x="380" y="110" width="320" height="190" rx="18" fill="#4ecdc4"/>
+  <rect x="110" y="320" width="620" height="70" rx="16" fill="#ff6b6b"/>
+  <text x="400" y="250" text-anchor="middle" font-family="Arial, sans-serif" font-size="30" fill="#2d3436">シーンイメージ</text>
+</svg>

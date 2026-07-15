@@ -1,0 +1,177 @@
+[
+  {
+    "id": "scene_01",
+    "title": "地震発生",
+    "description": "料理（肉じゃが）をしている最中に地震が発生し、愛犬（マルチーズ4歳）が鳴き出しました。\nガタガタガタ・・ え?!地震?! かくれなきゃ!!",
+    "image": "/assets/placeholder_01.jpg",
+    "question": "どう行動しますか？",
+    "options": [
+      {
+        "id": "1-1",
+        "text": "火を消して犬と一緒にテーブルの下にもぐる",
+        "isCorrect": true,
+        "explanation": "正解！震度5弱以上でガスメーターは自動的に遮断されるため、無理に火に近づかず、まずは自分の身とペットを守るのが最優先です。",
+        "nextScene": "scene_02"
+      },
+      {
+        "id": "1-2",
+        "text": "火を消さずに犬と一緒にテーブルの下にもぐる",
+        "isCorrect": true,
+        "explanation": "正解！震度5弱以上でガスメーターは自動的に遮断されるため、無理に火に近づかず、まずは自分の身とペットを守るのが最優先です。",
+        "nextScene": "scene_02"
+      },
+      {
+        "id": "1-3",
+        "text": "料理をつづけて犬もご飯を食べる",
+        "isCorrect": false,
+        "explanation": "不正解！強い揺れの中で火を使うのは大変危険です。ただちに身の安全を確保してください。",
+        "nextScene": "scene_01"
+      }
+    ]
+  },
+  {
+    "id": "scene_02",
+    "title": "避難準備",
+    "description": "揺れが収まり、ニュースで避難勧告を確認しました。しかし、外から煙が入ってくるため火事の危険があります。\n犬どうしよう……。",
+    "image": "/assets/placeholder_02.jpg",
+    "question": "どう行動しますか？",
+    "options": [
+      {
+        "id": "2-1",
+        "text": "一旦、家に置いていく",
+        "isCorrect": false,
+        "explanation": "不正解！火事の危険がある中、一度家を出ると戻って来られるとは限りません。",
+        "nextScene": "scene_02"
+      },
+      {
+        "id": "2-2",
+        "text": "リードを付けて逃げる",
+        "isCorrect": false,
+        "explanation": "不正解！そのままでは避難所に入れない可能性があります。",
+        "nextScene": "scene_02"
+      },
+      {
+        "id": "2-3",
+        "text": "リードを付けてクレートに入れて一緒に連れて避難しよう",
+        "isCorrect": true,
+        "explanation": "正解！パニックになったペットが逃げ出したり、他の動物や人とトラブルになるのを防ぐため、クレートでの移動が原則です。",
+        "nextScene": "scene_03"
+      }
+    ]
+  },
+  {
+    "id": "scene_03",
+    "title": "移動中の余震",
+    "description": "エレベーターが止まっているため階段で外へ出ました。その直後、また地震（余震）が発生しました。\nはっ!!! また地震だ!!!どうしよう!",
+    "image": "/assets/placeholder_03.jpg",
+    "question": "どう行動しますか？",
+    "options": [
+      {
+        "id": "3-1",
+        "text": "慌てて建物の中に入る",
+        "isCorrect": false,
+        "explanation": "不正解！建物の倒壊や落下物に巻き込まれる危険があります。",
+        "nextScene": "scene_03"
+      },
+      {
+        "id": "3-2",
+        "text": "ガラスの破片などが落ちてきそうな場所から離れて、かがんでペットと頭を守る",
+        "isCorrect": true,
+        "explanation": "正解！屋外にいる時は、落下物から身を守るために安全なスペースで身をかがめるのが基本です。",
+        "nextScene": "scene_03_5"
+      },
+      {
+        "id": "3-3",
+        "text": "走って避難所に向かう",
+        "isCorrect": false,
+        "explanation": "不正解！揺れが収まるまでは動くのは危険です。",
+        "nextScene": "scene_03"
+      }
+    ]
+  },
+  {
+    "id": "scene_03_5",
+    "title": "避難所へ出発",
+    "description": "揺れがおさまりました。避難所へ向かいます。",
+    "image": "/assets/placeholder_03_5.jpg",
+    "question": "その前に何か確認しますか？",
+    "options": [
+      {
+        "id": "35-1",
+        "text": "特に確認せず、一番近い避難所へ向かう",
+        "isCorrect": false,
+        "explanation": "不正解！情報収集を怠ると大変なことになります……",
+        "nextScene": "bad_end_1"
+      },
+      {
+        "id": "35-2",
+        "text": "スマホ等で、その避難所がペット受け入れ可能か確認してから向かう",
+        "isCorrect": true,
+        "explanation": "正解！事前に受け入れ状況を確認しておくことはとても重要です。今回は無事受け入れ可能な避難所を見つけました。",
+        "nextScene": "scene_04"
+      }
+    ]
+  },
+  {
+    "id": "bad_end_1",
+    "title": "避難所に受け入れ不可",
+    "description": "避難所に到着しましたが、受付で「動物のうけ入れおこなってません…」と断られてしまいました。\nダメか…これからどうしよう。",
+    "image": "/assets/bad_1.jpg",
+    "question": "どう行動しますか？",
+    "options": [
+      {
+        "id": "bad-1",
+        "text": "とりあえず家に帰ろう",
+        "isNeutral": true,
+        "explanation": "家に戻ってみます……",
+        "nextScene": "bad_end_2"
+      }
+    ]
+  },
+  {
+    "id": "bad_end_2",
+    "title": "倒壊した家",
+    "description": "とりあえず家に帰りましたが、家が倒壊しており中に入れません。\n「なんてこった……」",
+    "image": "/assets/bad_2.jpg",
+    "question": "【バッドエンド】 こうならないためにはどうすべきだったでしょうか？",
+    "options": [
+      {
+        "id": "bad-2",
+        "text": "最初からやり直す",
+        "isNeutral": true,
+        "explanation": "ペットとの同行避難は、事前のリサーチや受け入れ先の複数確保が命を救います。",
+        "nextScene": "restart"
+      }
+    ]
+  },
+  {
+    "id": "scene_04",
+    "title": "避難所到着",
+    "description": "揺れが収まり避難所へ到着しました。受付で犬連れ専用の場所へ案内され、教室に入りました。",
+    "image": "/assets/placeholder_04.jpg",
+    "question": "避難所が指定した場所でどうしますか？",
+    "options": [
+      {
+        "id": "4-1",
+        "text": "クレートに入れておく",
+        "isCorrect": true,
+        "explanation": "正解！避難所では動物が苦手な人やアレルギーの人もいます。クレート内で過ごさせるのが基本原則です。",
+        "nextScene": "end_good"
+      },
+      {
+        "id": "4-2",
+        "text": "クレートから出して自由にさせる",
+        "isCorrect": false,
+        "explanation": "不正解！見知らぬ場所でパニックになり逃走する恐れや、他の人に迷惑をかける恐れがあります。",
+        "nextScene": "scene_04"
+      },
+      {
+        "id": "4-3",
+        "text": "リードでつないでおく",
+        "isCorrect": false,
+        "explanation": "不正解！リードだけでは行動範囲が広く、周りの人とのトラブルの原因になる場合があります。",
+        "nextScene": "scene_04"
+      }
+    ]
+  }
+]
