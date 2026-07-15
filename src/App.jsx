@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import scenarioData from './data/scenario.json';
 import { AlertTriangle, Home, CheckCircle2, XCircle } from 'lucide-react';
 
@@ -7,6 +7,16 @@ export default function App() {
   const [isGameOver, setIsGameOver] = useState(false);
   const [isGameClear, setIsGameClear] = useState(false);
   const [feedback, setFeedback] = useState(null); // { isCorrect: boolean, text: string }
+  
+  // Preload
+  useEffect(() => {
+    scenarioData.forEach((scene) => {
+      if (scene.image) {
+        const img = new Image();
+        img.src = scene.image;
+      }
+    });
+  }, []);
 
   const handleOptionClick = (option) => {
     setFeedback({
