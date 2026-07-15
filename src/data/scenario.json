@@ -1,176 +1,334 @@
 [
   {
-    "id": "scene_01",
-    "title": "地震発生",
-    "description": "料理（肉じゃが）をしている最中に地震が発生し、愛犬（マルチーズ4歳）が鳴き出しました。\nガタガタガタ・・ え?!地震?! かくれなきゃ!!",
-    "image": "/assets/placeholder_01.jpg",
-    "question": "どう行動しますか？",
+    "id": "page_1",
+    "type": "story",
+    "title": "家での日常",
+    "description": "今日は肉じゃが♪ おいしくできるかな～♪",
+    "image": "/assets/page_01.jpg",
+    "shake": false,
+    "nextScene": "page_2"
+  },
+  {
+    "id": "page_2",
+    "type": "question",
+    "title": "地震発生！",
+    "description": "え!? 地震!? かくれなきゃ!!\nガタガタガタガタ...",
+    "image": "/assets/page_02.jpg",
+    "shake": true,
+    "question": "この時どうする？",
     "options": [
       {
         "id": "1-1",
         "text": "火を消して犬と一緒にテーブルの下にもぐる",
-        "isCorrect": true,
-        "explanation": "正解！震度5弱以上でガスメーターは自動的に遮断されるため、無理に火に近づかず、まずは自分の身とペットを守るのが最優先です。",
-        "nextScene": "scene_02"
+        "isCorrect": false,
+        "explanation": "無理に火に近づかない!!",
+        "nextScene": "page_2"
       },
       {
         "id": "1-2",
         "text": "火を消さずに犬と一緒にテーブルの下にもぐる",
         "isCorrect": true,
-        "explanation": "正解！震度5弱以上でガスメーターは自動的に遮断されるため、無理に火に近づかず、まずは自分の身とペットを守るのが最優先です。",
-        "nextScene": "scene_02"
+        "explanation": "正解！震度5弱以上で自動的に消えるから、まずは身を守ろう！",
+        "nextScene": "page_3"
       },
       {
         "id": "1-3",
-        "text": "料理をつづけて犬もご飯を食べる",
+        "text": "料理を続けて犬もご飯を食べる",
         "isCorrect": false,
-        "explanation": "不正解！強い揺れの中で火を使うのは大変危険です。ただちに身の安全を確保してください。",
-        "nextScene": "scene_01"
+        "explanation": "だめだめ!! 今は自分の身とペットを守るのが大事!!",
+        "nextScene": "page_2"
       }
     ]
   },
   {
-    "id": "scene_02",
-    "title": "避難準備",
-    "description": "揺れが収まり、ニュースで避難勧告を確認しました。しかし、外から煙が入ってくるため火事の危険があります。\n犬どうしよう……。",
-    "image": "/assets/placeholder_02.jpg",
-    "question": "どう行動しますか？",
+    "id": "page_3",
+    "type": "story",
+    "title": "地震をやり過ごす",
+    "description": "ガタガタガタ...",
+    "image": "/assets/page_03.jpg",
+    "shake": true,
+    "nextScene": "page_4"
+  },
+  {
+    "id": "page_4",
+    "type": "story",
+    "title": "揺れが収まる",
+    "description": "やっとおさまった...。ニュース見よう。",
+    "image": "/assets/page_04.jpg",
+    "shake": false,
+    "nextScene": "page_5"
+  },
+  {
+    "id": "page_5",
+    "type": "story",
+    "title": "情報収集",
+    "description": "吉田情報局（防災アプリ）を開く。\n「避難勧告がでてる！ まぁ大丈夫かー。」",
+    "image": "/assets/page_05.jpg",
+    "shake": false,
+    "nextScene": "page_6"
+  },
+  {
+    "id": "page_6",
+    "type": "story",
+    "title": "異変",
+    "description": "ん...? 外が煙たいな。",
+    "image": "/assets/page_06.jpg",
+    "shake": false,
+    "nextScene": "page_7"
+  },
+  {
+    "id": "page_7",
+    "type": "story",
+    "title": "火事の発生",
+    "description": "うわ!! 火事だ!! これはまずい... 避難しよう!",
+    "image": "/assets/page_07.jpg",
+    "shake": false,
+    "nextScene": "page_8"
+  },
+  {
+    "id": "page_8",
+    "type": "question",
+    "title": "避難の準備",
+    "description": "（犬が不安そうにしている...）\n犬どうしよう?",
+    "image": "/assets/page_08.jpg",
+    "shake": false,
+    "question": "どのように避難しますか？",
     "options": [
       {
         "id": "2-1",
-        "text": "一旦、家に置いていく",
+        "text": "後で戻るから、一旦家に置いていく",
         "isCorrect": false,
-        "explanation": "不正解！火事の危険がある中、一度家を出ると戻って来られるとは限りません。",
-        "nextScene": "scene_02"
+        "explanation": "戻って来られるとは限らないよ！",
+        "nextScene": "page_8"
       },
       {
         "id": "2-2",
-        "text": "リードを付けて逃げる",
+        "text": "リードを付けて抱っこで避難する",
         "isCorrect": false,
-        "explanation": "不正解！そのままでは避難所に入れない可能性があります。",
-        "nextScene": "scene_02"
+        "explanation": "避難所に入れないかも！他の動物や人とトラブルになるかも...!",
+        "nextScene": "page_8"
       },
       {
         "id": "2-3",
-        "text": "リードを付けてクレートに入れて一緒に連れて避難しよう",
+        "text": "リードを付けクレートに入れて避難する",
         "isCorrect": true,
-        "explanation": "正解！パニックになったペットが逃げ出したり、他の動物や人とトラブルになるのを防ぐため、クレートでの移動が原則です。",
-        "nextScene": "scene_03"
+        "explanation": "正解！安全かつ確実に避難所へ向かうための基本です。",
+        "nextScene": "page_9"
       }
     ]
   },
   {
-    "id": "scene_03",
-    "title": "移動中の余震",
-    "description": "エレベーターが止まっているため階段で外へ出ました。その直後、また地震（余震）が発生しました。\nはっ!!! また地震だ!!!どうしよう!",
-    "image": "/assets/placeholder_03.jpg",
-    "question": "どう行動しますか？",
+    "id": "page_9",
+    "type": "story",
+    "title": "階段での避難",
+    "description": "エレベーターは止まってる... 階段を使おう。",
+    "image": "/assets/page_09.jpg",
+    "shake": false,
+    "nextScene": "page_10"
+  },
+  {
+    "id": "page_10",
+    "type": "story",
+    "title": "屋外への脱出",
+    "description": "ふぅー... 外に出られた。",
+    "image": "/assets/page_10.jpg",
+    "shake": false,
+    "nextScene": "page_11"
+  },
+  {
+    "id": "page_11",
+    "type": "question",
+    "title": "余震発生！",
+    "description": "はっ!! また地震だ!!! どうしよう!",
+    "image": "/assets/page_11.jpg",
+    "shake": true,
+    "question": "この時どうする？",
     "options": [
       {
         "id": "3-1",
         "text": "慌てて建物の中に入る",
         "isCorrect": false,
-        "explanation": "不正解！建物の倒壊や落下物に巻き込まれる危険があります。",
-        "nextScene": "scene_03"
+        "explanation": "だめだめ!! 建物の崩壊に巻き込まれちゃう!!",
+        "nextScene": "page_11"
       },
       {
         "id": "3-2",
-        "text": "ガラスの破片などが落ちてきそうな場所から離れて、かがんでペットと頭を守る",
+        "text": "ガラスの破片が落ちてこない場所でかがみ、ペットと頭を守る",
         "isCorrect": true,
-        "explanation": "正解！屋外にいる時は、落下物から身を守るために安全なスペースで身をかがめるのが基本です。",
-        "nextScene": "scene_03_5"
+        "explanation": "正解！屋外では落下物から身を守るのが最優先です。",
+        "nextScene": "page_12"
       },
       {
         "id": "3-3",
         "text": "走って避難所に向かう",
         "isCorrect": false,
-        "explanation": "不正解！揺れが収まるまでは動くのは危険です。",
-        "nextScene": "scene_03"
+        "explanation": "揺れが収まるまでは動いたら危ない!!",
+        "nextScene": "page_11"
       }
     ]
   },
   {
-    "id": "scene_03_5",
+    "id": "page_12",
+    "type": "story",
+    "title": "身を守る",
+    "description": "今は、ペットと頭を守らなきゃ。",
+    "image": "/assets/page_12.jpg",
+    "shake": true,
+    "nextScene": "page_13"
+  },
+  {
+    "id": "page_13",
+    "type": "story",
+    "title": "余震が収まる",
+    "description": "おさまった...。良かった。",
+    "image": "/assets/page_12.jpg",
+    "shake": false,
+    "nextScene": "page_14"
+  },
+  {
+    "id": "page_14",
+    "type": "question",
     "title": "避難所へ出発",
-    "description": "揺れがおさまりました。避難所へ向かいます。",
-    "image": "/assets/placeholder_03_5.jpg",
-    "question": "その前に何か確認しますか？",
+    "description": "落ち着いて避難所に向かおう。\nテクテク...",
+    "image": "/assets/page_14.jpg",
+    "shake": false,
+    "question": "【ルート選択】どの避難所へ向かいますか？",
     "options": [
       {
-        "id": "35-1",
-        "text": "特に確認せず、一番近い避難所へ向かう",
-        "isCorrect": false,
-        "explanation": "不正解！情報収集を怠ると大変なことになります……",
-        "nextScene": "bad_end_1"
+        "id": "route_good",
+        "text": "事前にペット受け入れ可能か確認していた避難所へ向かう",
+        "isCorrect": true,
+        "explanation": "素晴らしい！事前の確認は命を救います。",
+        "nextScene": "page_15"
       },
       {
-        "id": "35-2",
-        "text": "スマホ等で、その避難所がペット受け入れ可能か確認してから向かう",
-        "isCorrect": true,
-        "explanation": "正解！事前に受け入れ状況を確認しておくことはとても重要です。今回は無事受け入れ可能な避難所を見つけました。",
-        "nextScene": "scene_04"
-      }
-    ]
-  },
-  {
-    "id": "bad_end_1",
-    "title": "避難所に受け入れ不可",
-    "description": "避難所に到着しましたが、受付で「動物のうけ入れおこなってません…」と断られてしまいました。\nダメか…これからどうしよう。",
-    "image": "/assets/bad_1.jpg",
-    "question": "どう行動しますか？",
-    "options": [
-      {
-        "id": "bad-1",
-        "text": "とりあえず家に帰ろう",
+        "id": "route_bad",
+        "text": "何も確認せず、とにかく一番近い避難所へ駆け込む",
         "isNeutral": true,
-        "explanation": "家に戻ってみます……",
-        "nextScene": "bad_end_2"
+        "explanation": "とりあえず一番近いところへ向かってみます...",
+        "nextScene": "bad_1"
       }
     ]
   },
   {
-    "id": "bad_end_2",
-    "title": "倒壊した家",
-    "description": "とりあえず家に帰りましたが、家が倒壊しており中に入れません。\n「なんてこった……」",
-    "image": "/assets/bad_2.jpg",
-    "question": "【バッドエンド】 こうならないためにはどうすべきだったでしょうか？",
-    "options": [
-      {
-        "id": "bad-2",
-        "text": "最初からやり直す",
-        "isNeutral": true,
-        "explanation": "ペットとの同行避難は、事前のリサーチや受け入れ先の複数確保が命を救います。",
-        "nextScene": "restart"
-      }
-    ]
-  },
-  {
-    "id": "scene_04",
+    "id": "page_15",
+    "type": "story",
     "title": "避難所到着",
-    "description": "揺れが収まり避難所へ到着しました。受付で犬連れ専用の場所へ案内され、教室に入りました。",
-    "image": "/assets/placeholder_04.jpg",
-    "question": "避難所が指定した場所でどうしますか？",
+    "description": "着いたけど、すごく並んでるな...",
+    "image": "/assets/page_15.jpg",
+    "shake": false,
+    "nextScene": "page_16"
+  },
+  {
+    "id": "page_16",
+    "type": "story",
+    "title": "避難所の受付",
+    "description": "受付の人「ワンちゃんをお連れですね。ワンちゃんはこちらになります。」",
+    "image": "/assets/page_16.jpg",
+    "shake": false,
+    "nextScene": "page_17"
+  },
+  {
+    "id": "page_17",
+    "type": "question",
+    "title": "避難所の教室",
+    "description": "ここからどうしよう？",
+    "image": "/assets/page_17.jpg",
+    "shake": false,
+    "question": "室内でのペットの扱いは？",
     "options": [
       {
         "id": "4-1",
         "text": "クレートに入れておく",
         "isCorrect": true,
-        "explanation": "正解！避難所では動物が苦手な人やアレルギーの人もいます。クレート内で過ごさせるのが基本原則です。",
-        "nextScene": "end_good"
+        "explanation": "正解！周囲の人への配慮として、避難所では原則クレート内で管理します。",
+        "nextScene": "page_18"
       },
       {
         "id": "4-2",
         "text": "クレートから出して自由にさせる",
         "isCorrect": false,
-        "explanation": "不正解！見知らぬ場所でパニックになり逃走する恐れや、他の人に迷惑をかける恐れがあります。",
-        "nextScene": "scene_04"
+        "explanation": "逸走の恐れあり!!",
+        "nextScene": "page_17"
       },
       {
         "id": "4-3",
-        "text": "リードでつないでおく",
+        "text": "室内に入りリードでつないでおく",
         "isCorrect": false,
-        "explanation": "不正解！リードだけでは行動範囲が広く、周りの人とのトラブルの原因になる場合があります。",
-        "nextScene": "scene_04"
+        "explanation": "ダメダメ!! 周りの人のことを考えないと!!",
+        "nextScene": "page_17"
+      }
+    ]
+  },
+  {
+    "id": "page_18",
+    "type": "story",
+    "title": "避難生活開始",
+    "description": "バイバイ...（犬は少し悲しそうにしているが、安全は確保された）",
+    "image": "/assets/page_18.jpg",
+    "shake": false,
+    "nextScene": "end_good"
+  },
+  {
+    "id": "bad_1",
+    "type": "story",
+    "title": "受付での悲劇",
+    "description": "受付の人「申し訳ありません。当避難所では動物の受け入れは行っていません。」",
+    "image": "/assets/bad_1.jpg",
+    "shake": false,
+    "nextScene": "bad_2"
+  },
+  {
+    "id": "bad_2",
+    "type": "story",
+    "title": "途方に暮れる",
+    "description": "ダメか... これからどうしよう。",
+    "image": "/assets/bad_1.jpg",
+    "shake": false,
+    "nextScene": "bad_3"
+  },
+  {
+    "id": "bad_3",
+    "type": "story",
+    "title": "危険な帰宅",
+    "description": "とりあえず家帰ろう...",
+    "image": "/assets/bad_1.jpg",
+    "shake": false,
+    "nextScene": "bad_4"
+  },
+  {
+    "id": "bad_4",
+    "type": "story",
+    "title": "倒壊した家",
+    "description": "なんてこった... 家が崩壊して中に入れない...",
+    "image": "/assets/bad_4.jpg",
+    "shake": false,
+    "nextScene": "bad_5"
+  },
+  {
+    "id": "bad_5",
+    "type": "story",
+    "title": "バッドエンド",
+    "description": "行き場を失ってしまった...",
+    "image": "/assets/bad_4.jpg",
+    "shake": false,
+    "nextScene": "bad_6"
+  },
+  {
+    "id": "bad_6",
+    "type": "question",
+    "title": "こうならないためには",
+    "description": "【対策】事前にペット受け入れ可能な避難所を確認する。一時預け先（親戚やペットホテル）を確保しておく。",
+    "image": "/assets/bad_4.jpg",
+    "shake": false,
+    "question": "最初からやり直して、正しい選択をしますか？",
+    "options": [
+      {
+        "id": "retry",
+        "text": "最初からやり直す",
+        "isNeutral": true,
+        "explanation": "もう一度、正しい避難方法を学びましょう。",
+        "nextScene": "restart"
       }
     ]
   }

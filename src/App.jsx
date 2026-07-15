@@ -66,28 +66,50 @@ export default function App() {
       </header>
 
       <main className="main-content">
+        {/* 修正1: scene-card から shake-animation を削除し、カード全体が揺れるのを防ぐ */}
         <div className="scene-card fade-in">
-          <div className="image-container">
+          
+          {/* 修正1: image-container に shake-animation を追加し、画像だけが揺れるようにする */}
+          <div className={`image-container ${currentScene.shake ? 'shake-animation' : ''}`}>
             <img src={currentScene.image} alt={currentScene.title} className="scene-image" />
           </div>
           
           <div className="scene-content">
             <h2 className="scene-title">{currentScene.title}</h2>
             <p className="scene-description">{currentScene.description}</p>
-            <p className="scene-question">{currentScene.question}</p>
+            {currentScene.type === 'question' && <p className="scene-question">{currentScene.question}</p>}
           </div>
 
           <div className="options-container">
-            {currentScene.options.map((option) => (
+            {currentScene.type === 'story' ? (
               <button 
-                key={option.id} 
-                className="option-btn"
-                onClick={() => handleOptionClick(option)}
-                disabled={feedback !== null}
+                className="option-btn primary-btn"
+                onClick={() => {
+                  // 修正2: 「次へ」ボタンでクリア画面 (end_good) やリスタート (restart) に正しく遷移できるように分岐を追加
+                  if (currentScene.nextScene === 'end_good') {
+                    setIsGameClear(true);
+                  } else if (currentScene.nextScene === 'restart') {
+                    restartGame();
+                  } else {
+                    const nextIndex = scenarioData.findIndex(s => s.id === currentScene.nextScene);
+                    if (nextIndex !== -1) setCurrentSceneIndex(nextIndex);
+                  }
+                }}
               >
-                {option.text}
+                次へ
               </button>
-            ))}
+            ) : (
+              currentScene.options.map((option) => (
+                <button 
+                  key={option.id} 
+                  className="option-btn"
+                  onClick={() => handleOptionClick(option)}
+                  disabled={feedback !== null}
+                >
+                  {option.text}
+                </button>
+              ))
+            )}
           </div>
         </div>
 
