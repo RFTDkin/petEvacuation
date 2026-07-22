@@ -7,6 +7,7 @@ export default function App() {
   const [isGameOver, setIsGameOver] = useState(false);
   const [isGameClear, setIsGameClear] = useState(false);
   const [feedback, setFeedback] = useState(null); // { isCorrect: boolean, text: string }
+  const [showQuestionPopup, setShowQuestionPopup] = useState(false);
   
   // Preload
   useEffect(() => {
@@ -27,6 +28,7 @@ export default function App() {
 
     setTimeout(() => {
       setFeedback(null);
+      setShowQuestionPopup(false);
       if (option.nextScene === 'end_good') {
         setIsGameClear(true);
       } else if (option.nextScene === 'restart') {
@@ -38,11 +40,27 @@ export default function App() {
     }, 3000);
   };
 
+  const handleNextBtnClick = () => {
+    if (currentScene.type === 'question') {
+      setShowQuestionPopup(true);
+    } else {
+      if (currentScene.nextScene === 'end_good') {
+        setIsGameClear(true);
+      } else if (currentScene.nextScene === 'restart') {
+        restartGame();
+      } else {
+        const nextIndex = scenarioData.findIndex(s => s.id === currentScene.nextScene);
+        if (nextIndex !== -1) setCurrentSceneIndex(nextIndex);
+      }
+    }
+  };
+
   const restartGame = () => {
     setCurrentSceneIndex(0);
     setIsGameOver(false);
     setIsGameClear(false);
     setFeedback(null);
+    setShowQuestionPopup(false);
   };
 
   if (isGameClear) {
@@ -60,7 +78,20 @@ export default function App() {
               <li>普段からクレートに入る練習をしておくと安心です。</li>
             </ul>
           </div>
-          <button className="primary-btn" onClick={restartGame}>もう一度プレイする</button>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '15px', width: '100%', maxWidth: '300px' }}>
+            <button className="primary-btn" onClick={restartGame}>もう一度プレイする</button>
+            <button 
+              className="option-btn" 
+              onClick={() => {
+                setIsGameClear(false);
+                const nextIndex = scenarioData.findIndex(s => s.id === 'bad_1');
+                if (nextIndex !== -1) setCurrentSceneIndex(nextIndex);
+              }}
+              style={{ textAlign: 'center', borderColor: '#e74c3c', color: '#e74c3c' }}
+            >
+              バッドエンドもやってみる
+            </button>
+          </div>
         </div>
       </div>
     );
@@ -76,10 +107,8 @@ export default function App() {
       </header>
 
       <main className="main-content">
-        {/* 修正1: scene-card から shake-animation を削除し、カード全体が揺れるのを防ぐ */}
         <div className="scene-card fade-in">
           
-          {/* 修正1: image-container に shake-animation を追加し、画像だけが揺れるようにする */}
           <div className={`image-container ${currentScene.shake ? 'shake-animation' : ''}`}>
             <img src={currentScene.image} alt={currentScene.title} className="scene-image" />
           </div>
@@ -87,41 +116,37 @@ export default function App() {
           <div className="scene-content">
             <h2 className="scene-title">{currentScene.title}</h2>
             <p className="scene-description">{currentScene.description}</p>
-            {currentScene.type === 'question' && <p className="scene-question">{currentScene.question}</p>}
           </div>
 
           <div className="options-container">
-            {currentScene.type === 'story' ? (
-              <button 
-                className="option-btn primary-btn"
-                onClick={() => {
-                  // 修正2: 「次へ」ボタンでクリア画面 (end_good) やリスタート (restart) に正しく遷移できるように分岐を追加
-                  if (currentScene.nextScene === 'end_good') {
-                    setIsGameClear(true);
-                  } else if (currentScene.nextScene === 'restart') {
-                    restartGame();
-                  } else {
-                    const nextIndex = scenarioData.findIndex(s => s.id === currentScene.nextScene);
-                    if (nextIndex !== -1) setCurrentSceneIndex(nextIndex);
-                  }
-                }}
-              >
-                次へ
-              </button>
-            ) : (
-              currentScene.options.map((option) => (
-                <button 
-                  key={option.id} 
-                  className="option-btn"
-                  onClick={() => handleOptionClick(option)}
-                  disabled={feedback !== null}
-                >
-                  {option.text}
-                </button>
-              ))
-            )}
+            <button 
+              className="option-btn primary-btn"
+              onClick={handleNextBtnClick}
+            >
+              次へ
+            </button>
           </div>
         </div>
+
+        {showQuestionPopup && currentScene.type === 'question' && (
+          <div className="popup-overlay">
+            <div className="popup-content zoom-in">
+              <h3 className="popup-question">{currentScene.question}</h3>
+              <div className="popup-options">
+                {currentScene.options.map((option) => (
+                  <button 
+                    key={option.id} 
+                    className="option-btn popup-option-btn"
+                    onClick={() => handleOptionClick(option)}
+                    disabled={feedback !== null}
+                  >
+                    {option.text}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
 
         {feedback && (
           <div className={`feedback-overlay ${feedback.isNeutral ? 'feedback-neutral' : (feedback.isCorrect ? 'feedback-correct' : 'feedback-incorrect')}`}>
